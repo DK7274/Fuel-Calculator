@@ -1,0 +1,77 @@
+Each data set starts with the name, then the fuel capacity, cruising speed, maximum range, and fuel consumption
+
+PC-21
+560
+611
+1333
+257
+BC Super King
+1638
+574
+2667
+352.5
+Hawk
+1307
+1038
+2520
+538.4
+Falcon 7X
+14488
+850
+11020
+1117.5
+B-737
+22964
+838
+5575
+3451.8
+C-130J
+20453
+644
+3300
+3451.8
+C-27J Spartan
+10040
+583
+5056
+1157.7
+C-17A globe
+104284
+830
+4480
+19320.5
+KC-30
+111000
+860
+14800
+6450
+P-8A Poseidon
+34000
+815
+8300
+3338.6
+AP-3C Orion
+28350
+750
+8690
+2446.8
+MC-55A Peregrine
+18733
+988
+12500
+1480.7
+EA-18 Growler
+6323
+1250
+2346
+3369
+F-35A Lightning II
+8278
+1976
+2800
+5841.9
+FA-18 Super Hornet
+6241
+1915
+2346
+5094.4
