@@ -72,24 +72,10 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
     button6_rect = [400, 250, button_width, button_height]
     button6_text = button_font.render("next page", True, text_color)
 
-    # drawing buttons and names of buttons
-    pygame.draw.rect(win, button_color, button1_rect)
-    win.blit(button1_text, (button1_rect[0], button1_rect[1]))
-    pygame.draw.rect(win, button_color, button2_rect)
-    win.blit(button2_text, (button2_rect[0], button2_rect[1]))
-    pygame.draw.rect(win, button_color, button3_rect)
-    win.blit(button3_text, (button3_rect[0], button3_rect[1]))
-    pygame.draw.rect(win, button_color, button4_rect)
-    win.blit(button4_text, (button4_rect[0], button4_rect[1]))
-    pygame.draw.rect(win, button_color, button5_rect)
-    win.blit(button5_text, (button5_rect[0], button5_rect[1]))
-    pygame.draw.rect(win, button_color, button6_rect)
-    win.blit(button6_text, (button6_rect[0], button6_rect[1]))
-
     #part of code that tells the color of button change to button_over_color if mouse over it
     if(button1_rect[0] <= mouseX <= button1_rect[0] + button1_rect[2] and
             button1_rect[1] <= mouseY <= button1_rect[1] + button1_rect[3]):
-        print("test")
+        #print("test")
         pygame.draw.rect(win,button_over_color,button1_rect)
     elif(button2_rect[0] <= mouseX <= button2_rect[0] + button2_rect[2] and
             button2_rect[1] <= mouseY <= button2_rect[1] + button2_rect[3]):
@@ -106,6 +92,21 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
     elif(button6_rect[0] <= mouseX <= button6_rect[0] + button6_rect[2] and
             button6_rect[1] <= mouseY <= button6_rect[1] + button6_rect[3]):
         pygame.draw.rect(win, button_over_color, button6_rect)
+    else:
+        # drawing buttons with original color
+        pygame.draw.rect(win, button_color, button1_rect)
+        pygame.draw.rect(win, button_color, button2_rect)
+        pygame.draw.rect(win, button_color, button3_rect)
+        pygame.draw.rect(win, button_color, button4_rect)
+        pygame.draw.rect(win, button_color, button5_rect)
+        pygame.draw.rect(win, button_color, button6_rect)
+
+    win.blit(button1_text, (button1_rect[0], button1_rect[1]))
+    win.blit(button2_text, (button2_rect[0], button2_rect[1]))
+    win.blit(button3_text, (button3_rect[0], button3_rect[1]))
+    win.blit(button4_text, (button4_rect[0], button4_rect[1]))
+    win.blit(button5_text, (button5_rect[0], button5_rect[1]))
+    win.blit(button6_text, (button6_rect[0], button6_rect[1]))
 
     pygame.display.update()
 
