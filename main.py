@@ -44,18 +44,37 @@ def menuWindow(): #initialises selection screen which shows different vehicle se
         resetScreen = True
     button_width = 100
     button_height = 50
-    currentButtonList = ["penis","balls"]
+    currentButtonList = ["penis","balls","cum","sex","amogus"]
     buttonList1 =["PC-21","BC Super King","BAE Hawk","Dassault Falcon 7X","Boeing 737"]
     buttonList2 = ["C-130J","C-27J","C-17A","KC-30","P-8A Poseiden"]
     buttonList3 = ["AP-3C Orion","MC-55A Peregrine","EA-18G Growler","FA-18 super hornet","F-35A Lightning II"]
+    #defining button text and positions
     button1_rect = [100,100,button_width,button_height]
     button1_text = button_font.render(currentButtonList[0],True,text_color)
     button2_rect = [250,100,button_width,button_height]
     button2_text = button_font.render(currentButtonList[1],True,text_color)
+    button3_rect = [400,100,button_width,button_height]
+    button3_text = button_font.render(currentButtonList[2],True,text_color)
+    button4_rect = [100,250,button_width,button_height]
+    button4_text = button_font.render(currentButtonList[3],True,text_color)
+    button5_rect = [250,250,button_width,button_height]
+    button5_text = button_font.render(currentButtonList[4],True,text_color)
+    button6_rect = [400,250,button_width,button_height]
+    button6_text = button_font.render("next page",True,text_color)
+
+    #drawing buttons and names of buttons
     pygame.draw.rect(win,button_color,button1_rect)
     win.blit(button1_text, (button1_rect[0], button1_rect[1]))
     pygame.draw.rect(win,button_color,button2_rect)
     win.blit(button2_text,(button2_rect[0],button2_rect[1]))
+    pygame.draw.rect(win,button_color,button3_rect)
+    win.blit(button3_text,(button3_rect[0],button3_rect[1]))
+    pygame.draw.rect(win,button_color,button4_rect)
+    win.blit(button4_text,(button4_rect[0],button4_rect[1]))
+    pygame.draw.rect(win,button_color,button5_rect)
+    win.blit(button5_text,(button5_rect[0],button5_rect[1]))
+    pygame.draw.rect(win,button_color,button6_rect)
+    win.blit(button6_text,(button6_rect[0],button6_rect[1]))
     pygame.display.update()
 
 def calculationWindow():
