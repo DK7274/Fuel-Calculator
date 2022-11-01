@@ -51,12 +51,10 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
         resetScreen = True
     button_width = 100
     button_height = 50
+    #list of aircraft on different pages
     buttonList1 = ["PC-21", "BC Super King", "BAE Hawk", "Dassault Falcon 7X", "Boeing 737"]
     buttonList2 = ["C-130J", "C-27J", "C-17A", "KC-30", "P-8A Poseiden"]
     buttonList3 = ["AP-3C Orion", "MC-55A Peregrine", "EA-18G Growler", "FA-18 super hornet", "F-35A Lightning II"]
-    for event in pygame.event.get():
-        if event.type == pygame.MOUSEMOTION: #sets mouseX and mouseY to where the mouse has moved to
-            mouseX,mouseY = event.pos
 
     # defining button text and positions
     button1_rect = [100, 100, button_width, button_height]
@@ -71,6 +69,26 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
     button5_text = button_font.render(currentButtonList[4], True, text_color)
     button6_rect = [400, 250, button_width, button_height]
     button6_text = button_font.render("next page", True, text_color)
+#getting mouse position during mouse motion and on clicking#
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouseX, mouseY = event.pos  # sets mouse X and mouse Y for
+            if (button6_rect[0] <= mouseX <= button6_rect[0] + button6_rect[2] and
+                    button6_rect[1] <= mouseY <= button6_rect[1] + button6_rect[3]):
+                pageNumber += 1
+                print("switch page")
+                if pageNumber == 1:
+                    currentButtonList = buttonList1
+                elif pageNumber == 2:
+                    currentButtonList = buttonList2
+                elif pageNumber == 3:
+                    currentButtonList = buttonList3
+                else:
+                    pageNumber = 1
+
+
+        if event.type == pygame.MOUSEMOTION:  # sets mouseX and mouseY to where the mouse has moved to
+            mouseX, mouseY = event.pos
 
     #part of code that tells the color of button change to button_over_color if mouse over it
     if(button1_rect[0] <= mouseX <= button1_rect[0] + button1_rect[2] and
