@@ -16,7 +16,7 @@ button_font = pygame.font.SysFont("Arial", 15)
 title_font = pygame.font.SysFont("Arial", 50)
 a = 0
 resetScreen = False
-currentButtonList = ["penis", "balls", "cum", "sex", "amogus"]
+currentButtonList = ["PC-21", "BC Super King", "BAE Hawk", "Dassault Falcon 7X", "Boeing 737"]
 pageNumber = 1
 
 # setting up window#
@@ -39,6 +39,7 @@ def startWindow():  # defines initial loading screen that displays a title
     calcStart = True
 
 
+
 def menuWindow():  # initialises selection screen which shows different vehicle selection
     global mouseX
     global mouseY
@@ -54,7 +55,7 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
     #list of aircraft on different pages
     buttonList1 = ["PC-21", "BC Super King", "BAE Hawk", "Dassault Falcon 7X", "Boeing 737"]
     buttonList2 = ["C-130J", "C-27J", "C-17A", "KC-30", "P-8A Poseiden"]
-    buttonList3 = ["AP-3C Orion", "MC-55A Peregrine", "EA-18G Growler", "FA-18 super hornet", "F-35A Lightning II"]
+    buttonList3 = ["AP-3C Orion", "MC-55A Peregrine", "EA-18G Growler", "FA-18 Super Hornet", "F-35A Lightning II"]
 
     # defining button text and positions
     button1_rect = [100, 100, button_width, button_height]
@@ -79,12 +80,17 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
                 print("switch page")
                 if pageNumber == 1:
                     currentButtonList = buttonList1
+                    resetScreen = False
                 elif pageNumber == 2:
                     currentButtonList = buttonList2
+                    resetScreen = False
                 elif pageNumber == 3:
                     currentButtonList = buttonList3
+                    resetScreen = False
                 else:
                     pageNumber = 1
+                    currentButtonList = buttonList1
+                    resetScreen = False
 
 
         if event.type == pygame.MOUSEMOTION:  # sets mouseX and mouseY to where the mouse has moved to
