@@ -4,6 +4,7 @@ pygame.init()
 import time
 
 # variable setup#
+clock = pygame.time.Clock()
 run = True
 calculationMode = False
 consumptionMode = False
@@ -46,6 +47,7 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
     global resetScreen
     global currentButtonList
     global pageNumber
+    clock.tick(15)
     if resetScreen == False:
         win.fill(bgColor)
         pygame.display.flip()
