@@ -20,6 +20,7 @@ resetScreen = False
 currentButtonList = ["PC-21", "BC Super King", "BAE Hawk", "Dassault Falcon 7X", "Boeing 737"]
 pageNumber = 1
 buttonNumber = 0
+aircraftData = []
 
 # setting up window#
 win = pygame.display.set_mode((600, 600))
@@ -40,9 +41,17 @@ def startWindow():  # defines initial loading screen that displays a title
     time.sleep(2)
     calcStart = True
 
-def getStatValues():
-    pass
 
+def getStatValues(): #function to assign txt file values to an array
+    global buttonNumber
+    global pageNumber
+    global aircraftData
+    if pageNumber == 1:
+        if buttonNumber == 1:
+         with open('fuelValues.txt','rt') as myfile:
+            for myline in myfile:
+                aircraftData.append(myline)
+            print(aircraftData[2],int(aircraftData[3]),int(aircraftData[4]),int(aircraftData[5]),int(aircraftData[6]))
 
 def menuWindow():  # initialises selection screen which shows different vehicle selection
     global mouseX
@@ -53,13 +62,13 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
     global buttonNumber
     global run
     clock.tick(15)
-    if resetScreen == False: #refrshes beackground of screen
+    if resetScreen == False:  # refrshes beackground of screen
         win.fill(bgColor)
         pygame.display.flip()
         resetScreen = True
     button_width = 100
     button_height = 50
-    #list of aircraft on different pages
+    # list of aircraft on different pages
     buttonList1 = ["PC-21", "BC Super King", "BAE Hawk", "Dassault Falcon 7X", "Boeing 737"]
     buttonList2 = ["C-130J", "C-27J", "C-17A", "KC-30", "P-8A Poseiden"]
     buttonList3 = ["AP-3C Orion", "MC-55A Peregrine", "EA-18G Growler", "FA-18 Super Hornet", "F-35A Lightning II"]
@@ -77,14 +86,15 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
     button5_text = button_font.render(currentButtonList[4], True, text_color)
     button6_rect = [400, 250, button_width, button_height]
     button6_text = button_font.render("next page", True, text_color)
-#getting mouse position during mouse motion and on clicking#
+    # getting mouse position during mouse motion and on clicking#
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-                run = False
-                break
+            run = False
+            break
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouseX, mouseY = event.pos  # sets mouse X and mouse Y for
-            if (button6_rect[0] <= mouseX <= button6_rect[0] + button6_rect[2] and #for clicking on the 'next' button and makes it switch aircraft lists#
+            if (button6_rect[0] <= mouseX <= button6_rect[0] + button6_rect[
+                2] and  # for clicking on the 'next' button and makes it switch aircraft lists#
                     button6_rect[1] <= mouseY <= button6_rect[1] + button6_rect[3]):
                 pageNumber += 1
                 print("switch page")
@@ -102,49 +112,49 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
                     currentButtonList = buttonList1
                     resetScreen = False
             elif (button1_rect[0] <= mouseX <= button1_rect[0] + button1_rect[2] and
-                    button1_rect[1] <= mouseY <= button1_rect[1] + button1_rect[3]):
+                  button1_rect[1] <= mouseY <= button1_rect[1] + button1_rect[3]):
                 buttonNumber = 1
                 print(buttonNumber)
+                getStatValues()
             elif (button2_rect[0] <= mouseX <= button2_rect[0] + button2_rect[2] and
-                    button2_rect[1] <= mouseY <= button2_rect[1] + button2_rect[3]):
+                  button2_rect[1] <= mouseY <= button2_rect[1] + button2_rect[3]):
                 buttonNumber = 2
                 print(buttonNumber)
             elif (button3_rect[0] <= mouseX <= button3_rect[0] + button3_rect[2] and
-                    button3_rect[1] <= mouseY <= button3_rect[1] + button3_rect[3]):
+                  button3_rect[1] <= mouseY <= button3_rect[1] + button3_rect[3]):
                 buttonNumber = 3
                 print(buttonNumber)
             elif (button4_rect[0] <= mouseX <= button4_rect[0] + button4_rect[2] and
-                    button4_rect[1] <= mouseY <= button4_rect[1] + button4_rect[3]):
+                  button4_rect[1] <= mouseY <= button4_rect[1] + button4_rect[3]):
                 buttonNumber = 4
                 print(buttonNumber)
             elif (button5_rect[0] <= mouseX <= button5_rect[0] + button5_rect[2] and
-                    button5_rect[1] <= mouseY <= button5_rect[1] + button5_rect[3]):
+                  button5_rect[1] <= mouseY <= button5_rect[1] + button5_rect[3]):
                 buttonNumber = 5
                 print(buttonNumber)
-
 
         if event.type == pygame.MOUSEMOTION:  # sets mouseX and mouseY to where the mouse has moved to
             mouseX, mouseY = event.pos
 
-    #part of code that tells the color of button change to button_over_color if mouse over it
-    if(button1_rect[0] <= mouseX <= button1_rect[0] + button1_rect[2] and
+    # part of code that tells the color of button change to button_over_color if mouse over it
+    if (button1_rect[0] <= mouseX <= button1_rect[0] + button1_rect[2] and
             button1_rect[1] <= mouseY <= button1_rect[1] + button1_rect[3]):
-        #print("test")
-        pygame.draw.rect(win,button_over_color,button1_rect)
-    elif(button2_rect[0] <= mouseX <= button2_rect[0] + button2_rect[2] and
-            button2_rect[1] <= mouseY <= button2_rect[1] + button2_rect[3]):
+        # print("test")
+        pygame.draw.rect(win, button_over_color, button1_rect)
+    elif (button2_rect[0] <= mouseX <= button2_rect[0] + button2_rect[2] and
+          button2_rect[1] <= mouseY <= button2_rect[1] + button2_rect[3]):
         pygame.draw.rect(win, button_over_color, button2_rect)
-    elif(button3_rect[0] <= mouseX <= button3_rect[0] + button3_rect[2] and
-            button3_rect[1] <= mouseY <= button3_rect[1] + button3_rect[3]):
+    elif (button3_rect[0] <= mouseX <= button3_rect[0] + button3_rect[2] and
+          button3_rect[1] <= mouseY <= button3_rect[1] + button3_rect[3]):
         pygame.draw.rect(win, button_over_color, button3_rect)
-    elif(button4_rect[0] <= mouseX <= button4_rect[0] + button4_rect[2] and
-            button4_rect[1] <= mouseY <= button4_rect[1] + button4_rect[3]):
+    elif (button4_rect[0] <= mouseX <= button4_rect[0] + button4_rect[2] and
+          button4_rect[1] <= mouseY <= button4_rect[1] + button4_rect[3]):
         pygame.draw.rect(win, button_over_color, button4_rect)
-    elif(button5_rect[0] <= mouseX <= button5_rect[0] + button5_rect[2] and
-            button5_rect[1] <= mouseY <= button5_rect[1] + button5_rect[3]):
+    elif (button5_rect[0] <= mouseX <= button5_rect[0] + button5_rect[2] and
+          button5_rect[1] <= mouseY <= button5_rect[1] + button5_rect[3]):
         pygame.draw.rect(win, button_over_color, button5_rect)
-    elif(button6_rect[0] <= mouseX <= button6_rect[0] + button6_rect[2] and
-            button6_rect[1] <= mouseY <= button6_rect[1] + button6_rect[3]):
+    elif (button6_rect[0] <= mouseX <= button6_rect[0] + button6_rect[2] and
+          button6_rect[1] <= mouseY <= button6_rect[1] + button6_rect[3]):
         pygame.draw.rect(win, button_over_color, button6_rect)
     else:
         # drawing buttons with original color
@@ -155,7 +165,7 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
         pygame.draw.rect(win, button_color, button5_rect)
         pygame.draw.rect(win, button_color, button6_rect)
 
-    #drawing text onto the buttons
+    # drawing text onto the buttons
     win.blit(button1_text, (button1_rect[0], button1_rect[1]))
     win.blit(button2_text, (button2_rect[0], button2_rect[1]))
     win.blit(button3_text, (button3_rect[0], button3_rect[1]))
