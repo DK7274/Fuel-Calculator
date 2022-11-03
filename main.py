@@ -42,16 +42,64 @@ def startWindow():  # defines initial loading screen that displays a title
     calcStart = True
 
 
-def getStatValues(): #function to assign txt file values to an array
+def getStatValues():  # function to assign txt file values to an array
     global buttonNumber
     global pageNumber
     global aircraftData
-    if pageNumber == 1:
+    dataRead = []
+    with open('fuelValues.txt', 'rt') as myfile:
+        for myline in myfile:
+            dataRead.append(myline)
+    if pageNumber == 1:  # set of if and elif statements that assigns the lines in the text document into an array
         if buttonNumber == 1:
-         with open('fuelValues.txt','rt') as myfile:
-            for myline in myfile:
-                aircraftData.append(myline)
-            print(aircraftData[2],int(aircraftData[3]),int(aircraftData[4]),int(aircraftData[5]),int(aircraftData[6]))
+            aircraftData = [dataRead[2].strip(), int(dataRead[3]), int(dataRead[4]), int(dataRead[5]),
+                            float(dataRead[6])]
+        elif buttonNumber == 2:
+            aircraftData = [dataRead[7].strip(), int(dataRead[8]), int(dataRead[9]), int(dataRead[10]),
+                            float(dataRead[11])]
+        elif buttonNumber == 3:
+            aircraftData = [dataRead[12].strip(), int(dataRead[13]), int(dataRead[14]), int(dataRead[15]),
+                            float(dataRead[16])]
+        elif buttonNumber == 4:
+            aircraftData = [dataRead[17].strip(), int(dataRead[18]), int(dataRead[19]), int(dataRead[20]),
+                            float(dataRead[21])]
+        elif buttonNumber == 5:
+            aircraftData = [dataRead[22].strip(), int(dataRead[23]), int(dataRead[24]), int(dataRead[25]),
+                            float(dataRead[26])]
+    elif pageNumber == 2:
+        if buttonNumber == 1:
+            aircraftData = [dataRead[27].strip(), int(dataRead[28]), int(dataRead[29]), int(dataRead[30]),
+                            float(dataRead[31])]
+        elif buttonNumber == 2:
+            aircraftData = [dataRead[32].strip(), int(dataRead[33]), int(dataRead[34]), int(dataRead[35]),
+                            float(dataRead[36])]
+        elif buttonNumber == 3:
+            aircraftData = [dataRead[37].strip(), int(dataRead[38]), int(dataRead[39]), int(dataRead[40]),
+                            float(dataRead[41])]
+        elif buttonNumber == 4:
+            aircraftData = [dataRead[42].strip(), int(dataRead[43]), int(dataRead[44]), int(dataRead[45]),
+                            float(dataRead[46])]
+        elif buttonNumber == 5:
+            aircraftData = [dataRead[47].strip(), int(dataRead[48]), int(dataRead[49]), int(dataRead[50]),
+                            float(dataRead[51])]
+    elif pageNumber == 3:
+        if buttonNumber == 1:
+            aircraftData = [dataRead[52].strip(), int(dataRead[53]), int(dataRead[54]), int(dataRead[55]),
+                            float(dataRead[56])]
+        elif buttonNumber == 2:
+            aircraftData = [dataRead[57].strip(), int(dataRead[58]), int(dataRead[59]), int(dataRead[60]),
+                            float(dataRead[61])]
+        elif buttonNumber == 3:
+            aircraftData = [dataRead[62].strip(), int(dataRead[63]), int(dataRead[64]), int(dataRead[65]),
+                            float(dataRead[66])]
+        elif buttonNumber == 4:
+            aircraftData = [dataRead[67].strip(), int(dataRead[68]), int(dataRead[69]), int(dataRead[70]),
+                            float(dataRead[71])]
+        elif buttonNumber == 5:
+            aircraftData = [dataRead[72].strip(), int(dataRead[73]), int(dataRead[74]), int(dataRead[75]),
+                            float(dataRead[76])]
+    print(aircraftData)
+
 
 def menuWindow():  # initialises selection screen which shows different vehicle selection
     global mouseX
@@ -120,18 +168,22 @@ def menuWindow():  # initialises selection screen which shows different vehicle 
                   button2_rect[1] <= mouseY <= button2_rect[1] + button2_rect[3]):
                 buttonNumber = 2
                 print(buttonNumber)
+                getStatValues()
             elif (button3_rect[0] <= mouseX <= button3_rect[0] + button3_rect[2] and
                   button3_rect[1] <= mouseY <= button3_rect[1] + button3_rect[3]):
                 buttonNumber = 3
                 print(buttonNumber)
+                getStatValues()
             elif (button4_rect[0] <= mouseX <= button4_rect[0] + button4_rect[2] and
                   button4_rect[1] <= mouseY <= button4_rect[1] + button4_rect[3]):
                 buttonNumber = 4
                 print(buttonNumber)
+                getStatValues()
             elif (button5_rect[0] <= mouseX <= button5_rect[0] + button5_rect[2] and
                   button5_rect[1] <= mouseY <= button5_rect[1] + button5_rect[3]):
                 buttonNumber = 5
                 print(buttonNumber)
+                getStatValues()
 
         if event.type == pygame.MOUSEMOTION:  # sets mouseX and mouseY to where the mouse has moved to
             mouseX, mouseY = event.pos
